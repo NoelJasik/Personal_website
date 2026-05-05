@@ -1,0 +1,48 @@
+---
+import AboutPage from './pages/About.astro';
+import FunPage from './pages/Fun.astro';
+import WebsitesPage from './pages/Websites.astro';
+import GuestBookPage from './pages/GuestBook.astro';
+import '../css/content.scss';
+---
+
+<div class="container">
+	<div class="content-box">
+		<input type="radio" name="currentPage" id="page-about" checked hidden />
+		<input type="radio" name="currentPage" id="page-fun" hidden />
+		<input type="radio" name="currentPage" id="page-websites" hidden />
+		<input type="radio" name="currentPage" id="page-guestbook" hidden />
+
+		<div class="page-pane">
+			<div class="page-shell">
+				<!-- Actual page component render goes here -->
+				<section class="page-section page-about">
+					<AboutPage />
+				</section>
+				<section class="page-section page-fun">
+					<FunPage />
+				</section>
+				<section class="page-section page-websites">
+					<WebsitesPage />
+				</section>
+				<section class="page-section page-guestbook">
+					<GuestBookPage />
+				</section>
+			</div>
+		</div>
+
+		<aside class="popup-nav">
+			<div class="nav-header">
+				<h3>Navigation</h3>
+				<p>Select a page to preview.</p>
+			</div>
+			<ul class="nav-list">
+				<li><label for="page-about">About me</label></li>
+				<li><label for="page-fun">Fun</label></li>
+				<li><label for="page-websites">Websites</label></li>
+				<li><label for="page-guestbook">Guest Book</label></li>
+			</ul>
+		</aside>
+	</div>
+</div>
+

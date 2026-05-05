@@ -1,6 +1,34 @@
+.backdrop {
+  z-index: -20;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(#666a86, #333333);
+}
+
 .background {
   width: 100%;
   height: 100%;
+  content: "";
+  left: 0;
   position: absolute;
-  background-color: aquamarine;
+  top: 0;
+  background-image: url(../assets/bgController.svg);
+  /* Removed background-size: cover; since you override it with 100px below anyway */
+  background-repeat: repeat;
+  background-size: 450px; /* The tile size */
+  z-index: -10;
+  animation: moveRight 2s linear infinite;
+}
+
+@keyframes moveRight {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    /* Move by exactly ONE tile width (100px) to make the loop seamless */
+    background-position: 450px 0;
+  }
 }/*# sourceMappingURL=background.css.map */

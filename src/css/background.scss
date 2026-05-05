@@ -1,6 +1,39 @@
+@import "./variables";
+
+
+
+.backdrop {
+    z-index: -20;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient($Medium, $Dark);
+}
+
 .background {
     width: 100%;
     height: 100%;
-    position:absolute;
-    background-color: aquamarine;
+    content: "";
+    left: 0;
+    position: absolute;
+    top: 0;
+    background-image: url(../assets/bgController.svg);
+    /* Removed background-size: cover; since you override it with 100px below anyway */
+    background-repeat: repeat;
+    // background-color: $Dark;
+    background-size: $bg-size; /* The tile size */
+    z-index: -10;
+    animation: moveRight 2s linear infinite;
+}
+
+@keyframes moveRight {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        /* Move by exactly ONE tile width (100px) to make the loop seamless */
+        background-position: $bg-size 0; 
+    }
 }

@@ -1,0 +1,141 @@
+@import "./variables";
+
+$content-height: 520px;
+$nav-width: 240px;
+$border: 1px solid rgba(255, 255, 255, 0.08);
+$panel-bg: rgba(18, 21, 31, 0.92);
+$link-bg: rgba(255, 255, 255, 0.06);
+$link-active-bg: rgba(149, 184, 209, 0.16);
+
+.container {
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 24px;
+	background: radial-gradient(circle at top left, rgba(149, 184, 209, 0.16), transparent 25%),
+		 radial-gradient(circle at bottom right, rgba(232, 221, 181, 0.14), transparent 20%);
+}
+
+.content-box {
+	width: min(100%, 1040px);
+	min-height: $content-height;
+	display: grid;
+	grid-template-columns: 1fr $nav-width;
+	background: rgba(12, 14, 23, 0.98);
+	border: $border;
+	border-radius: 28px;
+	box-shadow: 0 32px 90px rgba(0, 0, 0, 0.35);
+	overflow: hidden;
+}
+
+.page-pane {
+	position: relative;
+	padding: 32px;
+	background: $panel-bg;
+	overflow: hidden;
+}
+
+.page-shell {
+	height: 100%;
+	overflow-y: auto;
+	padding-right: 6px;
+}
+
+.page-section {
+	display: none;
+	color: $font;
+}
+
+#page-about:checked ~ .page-pane .page-about,
+#page-fun:checked ~ .page-pane .page-fun,
+#page-websites:checked ~ .page-pane .page-websites,
+#page-guestbook:checked ~ .page-pane .page-guestbook {
+	display: block;
+}
+
+.page-section h1 {
+	font-size: 2rem;
+	margin-bottom: 16px;
+	color: $Highlight1;
+}
+
+.page-section p {
+	line-height: 1.7;
+	max-width: 42rem;
+}
+
+.popup-nav {
+	padding: 32px 24px;
+	background: rgba(31, 38, 56, 0.96);
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	gap: 18px;
+}
+
+.nav-header h3 {
+	margin-bottom: 8px;
+	font-size: 1.15rem;
+	color: $Highlight2;
+}
+
+.nav-header p {
+	font-size: 0.95rem;
+	line-height: 1.55;
+	color: $font;
+	opacity: 0.82;
+}
+
+.nav-list {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.nav-list label {
+	display: block;
+	padding: 12px 16px;
+	border-radius: 14px;
+	background: $link-bg;
+	border: 1px solid transparent;
+	color: $font;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.nav-list label:hover {
+	background: rgba(255, 255, 255, 0.12);
+	transform: translateX(2px);
+}
+
+#page-about:checked ~ .popup-nav label[for="page-about"],
+#page-fun:checked ~ .popup-nav label[for="page-fun"],
+#page-websites:checked ~ .popup-nav label[for="page-websites"],
+#page-guestbook:checked ~ .popup-nav label[for="page-guestbook"] {
+	background: $link-active-bg;
+	border-color: rgba(149, 184, 209, 0.35);
+	color: $Highlight1;
+}
+
+@media (max-width: 900px) {
+	.content-box {
+		grid-template-columns: 1fr;
+	}
+
+	.popup-nav {
+		order: -1;
+	}
+}
+
+@media (max-width: 640px) {
+	.page-pane,
+	.popup-nav {
+		padding: 20px;
+	}
+
+	.nav-list label {
+		padding: 10px 14px;
+	}
+}
